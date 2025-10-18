@@ -27,7 +27,7 @@ Built with pure **HTML**, **CSS**, and **JavaScript**, it lets you write, edit, 
 
 1. **Clone or download** this repository.  
    ```bash
-   git clone https://github.com/mohamed-ali-2005/marknotes.git
+   git clone https://github.com/mohamed-ali-2005/MarkNotes.git
    ```  
 2. Open `index.html` directly in your browser.  
 3. Enter your name when prompted — it’ll greet you each time you open the app.  
@@ -95,5 +95,6 @@ Feel free to fork the repository, open issues, or submit pull requests.
 
 > 💬 “MarkNotes — Simple. Smart. Stylish.  
 > Your Markdown notes, reimagined.”  
+
 
 
