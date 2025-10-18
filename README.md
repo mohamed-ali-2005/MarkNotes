@@ -64,8 +64,8 @@ MarkNotes/
 
 ## 🪄 Preview  
 
-![MarkNotes Screenshot](https://via.placeholder.com/1000x600?text=MarkNotes+App+Preview)  
-> A clean, modern Markdown workspace designed for simplicity and focus.  
+<img width="1920" height="905" alt="Screenshot 2025-10-18 035546" src="https://github.com/user-attachments/assets/1cf6c994-2a56-437a-bbef-b5b9771405c5" />
+<img width="1920" height="916" alt="Screenshot 2025-10-18 040043" src="https://github.com/user-attachments/assets/2aba2902-eaaf-4b2f-82c1-dd4573efb274" />
 
 ---
 
@@ -94,3 +94,4 @@ Feel free to fork the repository, open issues, or submit pull requests.
 
 > 💬 “MarkNotes — Simple. Smart. Stylish.  
 > Your Markdown notes, reimagined.”  
+
