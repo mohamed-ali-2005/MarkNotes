@@ -1,4 +1,6 @@
-/* ===== Original CSS (unchanged) ===== */
+ /* =========================
+   🌈 CSS VARIABLES
+========================= */
 :root {
   --bg: linear-gradient(135deg, #3b82f6, #8b5cf6);
   --card: rgba(255, 255, 255, 0.75);
@@ -8,7 +10,6 @@
   --accent-2: #60a5fa;
   --danger: #e04848;
   --glass: rgba(255, 255, 255, 0.5);
-  --toolbar-bg: rgba(15, 23, 36, 0.03);
   --shadow: rgba(0, 0, 0, 0.08);
 }
 
@@ -21,571 +22,191 @@ body.dark {
   --accent: #2ea0ff;
   --accent-2: #8b5cf6;
   --danger: #ff6b6b;
-  --glass: rgba(255, 255, 255, 0.05);
-  --toolbar-bg: rgba(255, 255, 255, 0.04);
-  --shadow: rgba(0, 0, 0, 0.5);
+  --glass: rgba(255,255,255,0.05);
+  --shadow: rgba(0,0,0,0.5);
 }
 
+/* =========================
+   🔧 BASE
+========================= */
 * {
   box-sizing: border-box;
+  transition: background-color 0.25s ease,
+              color 0.25s ease,
+              box-shadow 0.25s ease,
+              transform 0.25s ease;
 }
 
-html,
-body {
+html, body {
   height: 100%;
   margin: 0;
   font-family: "Inter", system-ui, Arial, sans-serif;
   background: var(--bg);
   color: var(--text);
-  -webkit-font-smoothing: antialiased;
 }
 
 .hidden {
   display: none;
 }
 
-/* ===== Loader ===== */
+input, textarea {
+  background: transparent;
+  color: var(--text);
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px rgba(0,120,215,0.25);
+}
+
+/* =========================
+   🌀 LOADER
+========================= */
 #loader {
   position: fixed;
   inset: 0;
+  background: radial-gradient(circle, #0d0f25, #070719);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, var(--accent), var(--accent-2));
   z-index: 9999;
   color: #fff;
-  overflow: hidden;
 }
 
 .loader-circle {
   width: 100px;
   height: 100px;
   border-radius: 50%;
-  background: radial-gradient(circle at top left, #fff, rgba(255, 255, 255, 0.3));
+  background: radial-gradient(circle at 40% 40%, #2a2a72, #009ffd);
   display: flex;
   align-items: center;
   justify-content: center;
-  animation: pulse 2s infinite ease-in-out;
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
+  box-shadow: 0 0 30px rgba(92,135,255,0.4);
+  animation: spin 2s cubic-bezier(0.4,0,0.2,1) forwards;
 }
 
-.loader-circle span {
-  font-size: 48px;
-  font-weight: 800;
-  color: #fff;
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.9);
-  animation: floatM 2s infinite alternate ease-in-out;
-}
-
-.loader-content .sub {
-  margin-top: 16px;
-  font-size: 15px;
-  opacity: 0.9;
-  letter-spacing: 1px;
-}
-
-@keyframes pulse {
-  0%, 100% {
-    transform: scale(1);
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
-  }
-  50% {
-    transform: scale(1.15);
-    box-shadow: 0 0 40px rgba(255, 255, 255, 0.9);
-  }
-}
-
-@keyframes floatM {
-  from {
-    transform: translateY(0);
-  }
-  to {
-    transform: translateY(-8px);
-  }
-}
-
-/* ===== App Container ===== */
-.app-container {
-  max-width: 1250px;
-  margin: 40px auto;
-  background: var(--card);
-  backdrop-filter: blur(20px) saturate(150%);
-  border-radius: 24px;
-  box-shadow: 0 8px 40px var(--shadow);
-  overflow: hidden;
-  transition: all 0.3s ease;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  background-image: linear-gradient(
-    145deg,
-    rgba(255, 255, 255, 0.3),
-    rgba(255, 255, 255, 0.1)
-  );
-}
-
-.app-container:hover {
-  box-shadow: 0 12px 50px var(--accent-2);
-  transform: translateY(-2px);
-}
-
-/* ===== Topbar ===== */
-.topbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 12px 20px;
-  background: var(--card);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 20px 20px 0 0;
-}
-
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-.logo-small {
-  width: 44px;
-  height: 44px;
-  background: linear-gradient(135deg, var(--accent), #2ecc71);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 10px;
-  color: white;
-  font-weight: 700;
-}
-.brand-text h1 {
-  margin: 0;
-  font-size: 18px;
-}
-.brand-sub {
-  font-size: 12px;
-  color: var(--muted);
-}
-
-/* ===== Dashboard stats ===== */
-.dashboard-stats {
-  display: flex;
-  gap: 12px;
-  align-items: center;
-}
-.stat-card {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-  background: var(--card);
-  padding: 8px 12px;
-  border-radius: 10px;
-  box-shadow: 0 6px 18px rgba(10, 10, 10, 0.04);
-  min-width: 120px;
-}
-.stat-card .icon {
-  font-size: 20px;
-}
-.stat-num {
-  font-weight: 700;
-  font-size: 18px;
-}
-.stat-label {
-  font-size: 12px;
-  color: var(--muted);
-}
-
-/* ===== Top actions ===== */
-.top-actions {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-#welcome {
-  font-size: 14px;
-  color: var(--accent);
-  font-weight: 600;
-}
-.top-actions input {
-  padding: 8px 10px;
-  border-radius: 8px;
-  border: 1px solid rgba(0, 0, 0, 0.06);
-  min-width: 220px;
-  background: transparent;
-  color: var(--text);
-}
-.top-actions button,
-.import-label {
-  padding: 8px 10px;
-  border-radius: 8px;
-  border: none;
-  background: transparent;
-  cursor: pointer;
-}
-.import-label input {
-  display: none;
-}
-
-/* ===== Layout ===== */
-.layout {
-  display: flex;
-  gap: 20px;
-  padding: 20px;
-  max-width: 1200px;
-  margin: 0 auto;
-  align-items: flex-start;
-}
-
-/* ===== Sidebar ===== */
-.sidebar {
-  width: 280px;
-  background: var(--card);
-  border-radius: 12px;
-  padding: 12px;
-  box-shadow: 0 10px 30px rgba(10, 10, 10, 0.04);
-  overflow: auto;
-  max-height: 75vh;
-}
-.sidebar-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 8px;
-}
-.sidebar-header h3 {
-  margin: 0;
-}
-.sidebar-header button {
-  background: var(--accent);
-  color: white;
-  border: none;
-  padding: 6px 10px;
-  border-radius: 8px;
-  cursor: pointer;
-}
-.filters {
-  display: flex;
-  gap: 8px;
-  margin-bottom: 10px;
-}
-.filter-btn {
-  padding: 6px 8px;
-  border-radius: 8px;
-  border: none;
-  background: transparent;
-  cursor: pointer;
-  color: var(--muted);
-}
-.filter-btn.active {
-  background: var(--accent);
-  color: white;
-}
-.tag-list {
-  margin-bottom: 10px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-}
-.tag-item {
-  background: rgba(0, 0, 0, 0.06);
-  padding: 6px 8px;
-  border-radius: 6px;
-  font-size: 12px;
-  cursor: pointer;
-}
-
-/* ===== Notes list ===== */
-.notes-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-.note-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px;
-  border-radius: 10px;
-  background: var(--glass);
-  cursor: pointer;
-  transition: transform 0.12s ease, background 0.12s;
-}
-.note-item:hover {
-  transform: translateY(-4px);
-  background: rgba(0, 0, 0, 0.06);
-}
-.note-main strong {
-  display: block;
-}
-.note-main .meta {
-  font-size: 12px;
-  color: var(--muted);
-}
-
-/* ===== Editor ===== */
-.main {
-  flex: 1;
-}
-.editor-area {
-  background: var(--card);
-  padding: 14px;
-  border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(10, 10, 10, 0.04);
-}
-#note-title {
-  width: 100%;
-  padding: 10px;
-  border-radius: 8px;
-  border: 1px solid rgba(0, 0, 0, 0.06);
-  margin-bottom: 8px;
-  font-weight: 600;
-}
-.editor-controls {
-  display: flex;
-  gap: 8px;
-  align-items: center;
-  margin-bottom: 12px;
-}
-.editor-controls input {
-  padding: 8px 10px;
-  border-radius: 8px;
-  border: 1px solid rgba(0, 0, 0, 0.06);
-  min-width: 180px;
-}
-.editor-controls button {
-  padding: 8px 10px;
-  border-radius: 8px;
-  border: none;
-  cursor: pointer;
-  background: var(--accent);
-  color: white;
-}
-.editor-controls button.danger {
-  background: var(--danger);
-}
-.editor-panel {
-  display: flex;
-  gap: 12px;
-}
-#editor {
-  width: 50%;
-  height: 60vh;
-  padding: 12px;
-  border-radius: 8px;
-  border: 1px solid rgba(0, 0, 0, 0.06);
-  resize: none;
-  font-family: "Source Code Pro", monospace;
-  background: transparent;
-  color: var(--text);
-}
-.preview {
-  width: 50%;
-  height: 60vh;
-  padding: 12px;
-  border-radius: 8px;
-  border: 1px solid rgba(0, 0, 0, 0.06);
-  overflow: auto;
-  background: var(--glass);
-}
-
-/* ===== Tag suggestions ===== */
-.tag-suggestions {
-  margin-top: 10px;
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-}
-.tag-suggestion {
-  background: var(--accent);
-  color: #fff;
-  padding: 6px 10px;
-  border-radius: 20px;
-  cursor: pointer;
-  font-size: 13px;
-}
-
-/* ===== Footer ===== */
-footer {
-  text-align: center;
-  padding: 14px;
-  background: var(--card);
-  color: var(--muted);
-  font-size: 0.9em;
-  border-top: none;
-  margin-top: 0;
-  border-radius: 0 0 24px 24px;
-  box-shadow: 0 -2px 20px rgba(0, 0, 0, 0.1);
-}
-body.dark footer {
-  background: rgba(21, 27, 38, 0.4);
-  color: #bbb;
-  border-top: none;
-}
-
-/* ===== Animations ===== */
-@keyframes fadeUp {
-  0% {
-    opacity: 0;
-    transform: translateY(40px) scale(0.98);
-  }
-  60% {
-    opacity: 1;
-    transform: translateY(-5px) scale(1.01);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-.app-container {
-  animation: fadeUp 0.8s ease forwards;
-  opacity: 0;
-}
-
-@keyframes fadeOut {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-    visibility: hidden;
-  }
-}
-
-#loader.fade-out {
-  animation: fadeOut 0.6s ease forwards;
-}
-
-/* ===== Responsive ===== */
-@media (max-width: 900px) {
-  .layout {
-    flex-direction: column;
-    padding: 10px;
-  }
-  .sidebar {
-    width: 100%;
-    max-height: none;
-  }
-  .editor-panel {
-    flex-direction: column;
-  }
-  #editor,
-  .preview {
-    width: 100%;
-    height: 45vh;
-  }
-  .dashboard-stats {
-    display: none;
-  }
-}
-
-
-/* =========================
-   🌀 LOADER SECTION
-========================= */
-
-#loader {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(circle at center, #0d0f25, #070719);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  z-index: 9999;
-  color: #fff;
-  font-family: 'Inter', sans-serif;
-  overflow: hidden;
-}
-
-/* ===== دائرة التحميل المتوهجة ===== */
-.loader-circle {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  position: relative;
-  border: 2px solid rgba(255, 255, 255, 0.15);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 1rem;
-  animation: spin 4s linear forwards; /* ⏱ دورة واحدة فقط */
-  box-shadow: 0 0 30px rgba(92, 135, 255, 0.4);
-  background: radial-gradient(circle at 40% 40%, #2a2a72 0%, #009ffd 80%);
-}
-
-/* ===== الحرف M المتوهج ===== */
 .loader-circle span {
   font-size: 2.5rem;
   font-weight: 700;
-  color: #ffffff;
-  text-shadow: 0 0 15px rgba(0, 153, 255, 0.9);
-  animation: glow 2s ease-in-out infinite alternate;
+  text-shadow: 0 0 15px rgba(0,153,255,0.9);
 }
 
-/* ===== حركة الدوران ===== */
 @keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  to { transform: rotate(360deg); }
 }
 
-/* ===== وميض الحرف M ===== */
-@keyframes glow {
-  from {
-    text-shadow: 0 0 10px rgba(0, 153, 255, 0.5);
-  }
-  to {
-    text-shadow: 0 0 25px rgba(0, 153, 255, 1);
-  }
-}
-
-/* ===== نصوص التحميل ===== */
-.loader-content {
-  text-align: center;
-  animation: fadeIn 1.2s ease-in-out forwards;
-}
-
-.loader-content h1 {
-  font-size: 1.8rem;
-  font-weight: 700;
-  margin: 0;
-  letter-spacing: 0.5px;
-}
-
-.loader-content p {
-  font-size: 0.95rem;
-  color: rgba(255, 255, 255, 0.75);
-  margin-top: 0.5rem;
-}
-
-/* ===== دخول ناعم للنص ===== */
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-    transform: translateY(15px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* ===== اختفاء ناعم بعد التحميل ===== */
 #loader.fade-out {
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.8s ease;
 }
 
-.loader-circle {
-  animation: spin 2s cubic-bezier(0.4, 0, 0.2, 1) 1; /* تدور مرة واحدة بس */
+/* =========================
+   📦 APP CONTAINER
+========================= */
+.app-container {
+  max-width: 1250px;
+  margin: 40px auto;
+  background: var(--card);
+  backdrop-filter: blur(20px);
+  border-radius: 24px;
+  box-shadow: 0 8px 40px var(--shadow);
+  animation: fadeUp 0.8s ease forwards;
+  opacity: 0;
 }
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================
+   🧭 LAYOUT
+========================= */
+.layout {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+}
+
+.sidebar {
+  width: 280px;
+  background: var(--card);
+  border-radius: 12px;
+  padding: 12px;
+  max-height: 75vh;
+  overflow-y: auto;
+}
+
+.main {
+  flex: 1;
+}
+
+/* =========================
+   📝 NOTES
+========================= */
+.note-item {
+  padding: 10px;
+  border-radius: 10px;
+  background: var(--glass);
+  cursor: pointer;
+}
+
+.note-item:hover {
+  transform: translateY(-4px);
+}
+
+/* =========================
+   ✍️ EDITOR
+========================= */
+#editor,
+.preview {
+  height: 60vh;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(0,0,0,0.06);
+}
+
+#editor {
+  font-family: "Source Code Pro", monospace;
+  resize: none;
+}
+
+.preview {
+  background: var(--glass);
+  overflow-y: auto;
+}
+
+/* =========================
+   🔘 BUTTONS
+========================= */
+button {
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  background: var(--accent);
+  color: #fff;
+}
+
+button.danger {
+  background: var(--danger);
+}
+
+button:hover {
+  transform: translateY(-1px);
+}
+
+button:active {
+  transform: scale(0.96);
+}
+
