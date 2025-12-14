@@ -6,7 +6,7 @@
   --muted: #6b7280;
   --accent: #0078d7;
   --accent-2: #60a5fa;
-  --danger: #e04848;
+  --danger: #ee3434;
   --glass: rgba(255, 255, 255, 0.5);
   --toolbar-bg: rgba(15, 23, 36, 0.03);
   --shadow: rgba(0, 0, 0, 0.08);
@@ -19,11 +19,11 @@ body.dark {
   --text: #e6eef7;
   --muted: #9aa7b6;
   --accent: #2ea0ff;
-  --accent-2: #8b5cf6;
+  --accent-2: #2bff6aff;
   --danger: #ff6b6b;
   --glass: rgba(255, 255, 255, 0.05);
   --toolbar-bg: rgba(255, 255, 255, 0.04);
-  --shadow: rgba(0, 0, 0, 0.5);
+  --shadow: rgba(218, 105, 105, 0.5);
 }
 
 * {
@@ -153,7 +153,7 @@ body {
   align-items: center;
   justify-content: center;
   border-radius: 10px;
-  color: white;
+  color: rgb(250, 48, 48);
   font-weight: 700;
 }
 .brand-text h1 {
