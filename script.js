@@ -9,6 +9,7 @@
    - dashboard stats, dark/light theme
    - welcome message, loader splash, autosave
    ========================================================= */
+// sara-yehia add new commit
 
 const APP_KEY = "marknotes_v1";
 const loader = document.getElementById("loader");
@@ -390,3 +391,4 @@ window.addEventListener("load", () => {
     app.classList.remove("hidden");
   }, 100500);
 });
+
