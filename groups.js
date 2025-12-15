@@ -1,3 +1,6 @@
+// test comment 
+
+//update the file
 class noteGroup {
     constructor(name) {
         this.groupName = name;
