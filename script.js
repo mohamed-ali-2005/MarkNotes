@@ -380,13 +380,19 @@ setInterval(() => {
 
 
 /* ---------- Loader Duration (M Rotation) ---------- */
-window.addEventListener("load", () => {
+
+function hideLoaderAfterDelay(delay) {
   const loader = document.getElementById("loader");
   const app = document.getElementById("app");
 
-  // 🌀 انتظر 3.5 ثواني حتى يكمل حرف M دورانه الكامل
   setTimeout(() => {
     loader.classList.add("fade-out");
     app.classList.remove("hidden");
-  }, 100500);
+  }, delay);
+}
+
+window.addEventListener("load", () => {
+  // 🌀 انتظار 3.5 ثواني
+  hideLoaderAfterDelay(3500);
 });
+
