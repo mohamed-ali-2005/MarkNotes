@@ -17,3 +17,24 @@ class noteGroup {
         }
     }
 }// not operational [ for testing ;)]
+
+//Group Validation
+function isValidGroupName(groupName, groups) {
+    if (!groupName || groupName.trim().length < 3) {
+        return false;
+    }
+
+    return !groups.some(g => g.name === groupName);
+}
+//Search Groups
+function searchGroups(keyword, groups) {
+    return groups.filter(group =>
+        group.name.toLowerCase().includes(keyword.toLowerCase())
+    );
+}
+
+//Group Counter
+
+function getGroupsCount(groups) {
+    return groups.length;
+}
