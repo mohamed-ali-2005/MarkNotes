@@ -159,10 +159,14 @@ textarea:focus {
   border-radius: 10px;
   background: var(--glass);
   cursor: pointer;
+  transition: all 0.3s ease;
+
 }
 
 .note-item:hover {
   transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+
 }
 
 /* =========================
@@ -179,11 +183,16 @@ textarea:focus {
 #editor {
   font-family: "Source Code Pro", monospace;
   resize: none;
+  background: #fdfdfd;   
+  line-height: 1.5;
+
 }
 
 .preview {
   background: var(--glass);
-  overflow-y: auto;
+  overflow-y: auto;font-size: 15px;       
+  line-height: 1.6;
+
 }
 
 /* =========================
